@@ -932,27 +932,31 @@ public class PortalImpl implements Portal {
 		boolean digest) {
 
 		if (!digest) {
-			response.setHeader(HttpHeaders.WWW_AUTHENTICATE, _BASIC_REALM);
+			response.setHeader(
+				HttpHeaders.WWW_AUTHENTICATE,
+				"Basic realm=\"" + PORTAL_REALM + "\"");
 			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+
 			return;
 		}
 
 		// Must generate a new nonce for each 401 (RFC2617, 3.2.1)
 
-		long companyId = PortalInstances.getCompanyId(request);
-
-		String remoteAddress = request.getRemoteAddr();
-
-		String nonce = NonceUtil.generate(companyId, remoteAddress);
-
 		StringBundler sb = new StringBundler(4);
 
-		sb.append(_DIGEST_REALM);
-		sb.append(", nonce=\"");
+		sb.append("Digest realm=\"");
+		sb.appendPORTAL_REALM);
+		sb.append("\", nonce=\"");
+
+		String nonce = NonceUtil.generate(
+			PortalInstances.getCompanyId(request), request.getRemoteAddr());
+
 		sb.append(nonce);
+
 		sb.append("\"");
 
 		response.setHeader(HttpHeaders.WWW_AUTHENTICATE, sb.toString());
+
 		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 	}
 
@@ -8404,12 +8408,6 @@ public class PortalImpl implements Portal {
 
 	private static final Log _logWebServerServlet = LogFactoryUtil.getLog(
 		WebServerServlet.class);
-
-	private static final String _BASIC_REALM =
-		"Basic realm=\"" + PORTAL_REALM + "\"";
-
-	private static final String _DIGEST_REALM =
-		"Digest realm=\"" + PORTAL_REALM + "\"";
 
 	private static final String _J_SECURITY_CHECK = "j_security_check";
 
