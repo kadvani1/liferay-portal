@@ -81,7 +81,8 @@ public class PrincipalException extends PortalException {
 			super(
 				String.format(
 					"User %s must be the company administrator to perform " +
-					"the action", userId));
+						"the action",
+					userId));
 
 			this.userId = userId;
 		}
@@ -110,7 +111,7 @@ public class PrincipalException extends PortalException {
 	public static class MustBeInvokedByPost extends PrincipalException {
 
 		public MustBeInvokedByPost(String url) {
-			super(String.format("URL %s must be invoked using POST", url));
+			super(String.format("URL %s must be invoked by POST", url));
 
 			this.url = url;
 		}
@@ -124,8 +125,9 @@ public class PrincipalException extends PortalException {
 		public MustBeMarketplaceAdmin(long userId) {
 			super(
 				String.format(
-					"User %s must be a marketplace administrator to perform " +
-					"the action", userId));
+					"User %s must be a Marketplace administrator to perform " +
+						"the action",
+					userId));
 
 			this.userId = userId;
 		}
@@ -140,7 +142,8 @@ public class PrincipalException extends PortalException {
 			super(
 				String.format(
 					"User %s must be a universal administrator to perform " +
-					"the action", userId));
+						"the action",
+					userId));
 
 			this.userId = userId;
 		}
