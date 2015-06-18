@@ -359,7 +359,7 @@ public class CreateAccountAction extends PortletAction {
 
 		if (anonymousUser.getStatus() != WorkflowConstants.STATUS_INCOMPLETE) {
 			throw new PrincipalException.MustBeAuthenticated(
-				String.valueOf(anonymousUser.getUserId()));
+				anonymousUser.getUserId());
 		}
 
 		UserLocalServiceUtil.deleteUser(anonymousUser.getUserId());
