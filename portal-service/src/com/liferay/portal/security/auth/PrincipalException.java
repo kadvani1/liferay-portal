@@ -24,7 +24,7 @@ import com.liferay.portal.security.permission.PermissionChecker;
  */
 public class PrincipalException extends PortalException {
 
-	public static Class[] getNestedClasses() {
+	public static Class<?>[] getNestedClasses() {
 		return _NESTED_CLASSES;
 	}
 
@@ -392,7 +392,7 @@ public class PrincipalException extends PortalException {
 
 	}
 
-	private static final Class[] _NESTED_CLASSES = {
+	private static final Class<?>[] _NESTED_CLASSES = {
 		MustBeAuthenticated.class, MustBeCompanyAdmin.class,
 		MustBeEnabled.class, MustBeInvokedByPost.class,
 		MustBeMarketplaceAdmin.class, MustBeOmniadmin.class,
