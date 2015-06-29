@@ -14,7 +14,6 @@
 
 package com.liferay.portlet.exportimport.lar;
 
-import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.repository.model.FileEntry;
 import com.liferay.portal.kernel.util.DateRange;
 import com.liferay.portal.kernel.util.StringPool;
@@ -87,9 +86,7 @@ public class DummyExportImportHelperImpl implements ExportImportHelper {
 	}
 
 	@Override
-	public Layout getExportableLayout(ThemeDisplay themeDisplay)
-		throws PortalException {
-
+	public Layout getExportableLayout(ThemeDisplay themeDisplay) {
 		return new LayoutImpl();
 	}
 
@@ -188,9 +185,7 @@ public class DummyExportImportHelperImpl implements ExportImportHelper {
 	}
 
 	@Override
-	public Map<Long, Boolean> getLayoutIdMap(PortletRequest portletRequest)
-		throws PortalException {
-
+	public Map<Long, Boolean> getLayoutIdMap(PortletRequest portletRequest) {
 		return Collections.<Long, Boolean>emptyMap();
 	}
 
@@ -200,31 +195,25 @@ public class DummyExportImportHelperImpl implements ExportImportHelper {
 	}
 
 	@Override
-	public long[] getLayoutIds(Map<Long, Boolean> layoutIdMap)
-		throws PortalException {
-
+	public long[] getLayoutIds(Map<Long, Boolean> layoutIdMap) {
 		return new long[0];
 	}
 
 	@Override
 	public long[] getLayoutIds(
-			Map<Long, Boolean> layoutIdMap, long targetGroupId)
-		throws PortalException {
+		Map<Long, Boolean> layoutIdMap, long targetGroupId) {
 
 		return new long[0];
 	}
 
 	@Override
-	public long[] getLayoutIds(PortletRequest portletRequest)
-		throws PortalException {
-
+	public long[] getLayoutIds(PortletRequest portletRequest) {
 		return new long[0];
 	}
 
 	@Override
 	public long[] getLayoutIds(
-			PortletRequest portletRequest, long targetGroupId)
-		throws PortalException {
+		PortletRequest portletRequest, long targetGroupId) {
 
 		return new long[0];
 	}
@@ -266,17 +255,16 @@ public class DummyExportImportHelperImpl implements ExportImportHelper {
 	}
 
 	@Override
-	public List<Layout> getMissingParentLayouts(Layout layout, long liveGroupId)
-		throws PortalException {
+	public List<Layout> getMissingParentLayouts(
+		Layout layout, long liveGroupId) {
 
 		return Collections.<Layout>emptyList();
 	}
 
 	@Override
 	public long getModelDeletionCount(
-			PortletDataContext portletDataContext,
-			StagedModelType stagedModelType)
-		throws PortalException {
+		PortletDataContext portletDataContext,
+		StagedModelType stagedModelType) {
 
 		return 0L;
 	}
@@ -295,15 +283,14 @@ public class DummyExportImportHelperImpl implements ExportImportHelper {
 
 	@Override
 	public FileEntry getTempFileEntry(
-			long groupId, long userId, String folderName)
-		throws PortalException {
+		long groupId, long userId, String folderName) {
 
 		return null;
 	}
 
 	@Override
-	public UserIdStrategy getUserIdStrategy(long userId, String userIdStrategy)
-		throws PortalException {
+	public UserIdStrategy getUserIdStrategy(
+		long userId, String userIdStrategy) {
 
 		return null;
 	}
@@ -563,6 +550,7 @@ public class DummyExportImportHelperImpl implements ExportImportHelper {
 	 *             #validateMissingReferences(PortletDataContext)}
 	 */
 	@Deprecated
+	@Override
 	public MissingReferences validateMissingReferences(
 			long userId, long groupId, Map<String, String[]> parameterMap,
 			File file)
