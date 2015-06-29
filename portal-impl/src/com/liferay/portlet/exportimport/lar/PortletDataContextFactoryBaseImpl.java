@@ -35,10 +35,10 @@ public class PortletDataContextFactoryBaseImpl
 	}
 
 	public PortletDataContextFactoryBaseImpl(
-		PortletDataContextFactory defaultPortletDataContextFactory) {
+		PortletDataContextFactory portletDataContextFactory) {
 
-		_defaultPortletDataContextFactory = defaultPortletDataContextFactory;
-		
+		_portletDataContextFactory = portletDataContextFactory;
+
 		Registry registry = RegistryUtil.getRegistry();
 
 		_serviceTracker = registry.trackServices(
@@ -95,13 +95,13 @@ public class PortletDataContextFactoryBaseImpl
 
 	protected PortletDataContextFactory getPortletDataContextFactory() {
 		if (_serviceTracker.isEmpty()) {
-			return _defaultPortletDataContextFactory;
+			return _portletDataContextFactory;
 		}
 
 		return _serviceTracker.getService();
 	}
 
-	private final PortletDataContextFactory _defaultPortletDataContextFactory;
+	private final PortletDataContextFactory _portletDataContextFactory;
 	private final ServiceTracker
 		<PortletDataContextFactory, PortletDataContextFactory> _serviceTracker;
 

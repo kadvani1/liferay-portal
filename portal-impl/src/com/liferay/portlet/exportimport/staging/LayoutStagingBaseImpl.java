@@ -34,8 +34,8 @@ public class LayoutStagingBaseImpl implements LayoutStaging {
 		this(new DummyLayoutStagingImpl());
 	}
 
-	public LayoutStagingBaseImpl(LayoutStaging defaultLayoutStaging) {
-		_defaultLayoutStaging = defaultLayoutStaging;
+	public LayoutStagingBaseImpl(LayoutStaging layoutStaging) {
+		_layoutStaging = layoutStaging;
 
 		Registry registry = RegistryUtil.getRegistry();
 
@@ -78,13 +78,13 @@ public class LayoutStagingBaseImpl implements LayoutStaging {
 
 	protected LayoutStaging getLayoutStaging() {
 		if (_serviceTracker.isEmpty()) {
-			return _defaultLayoutStaging;
+			return _layoutStaging;
 		}
 
 		return _serviceTracker.getService();
 	}
 
-	private final LayoutStaging _defaultLayoutStaging;
+	private final LayoutStaging _layoutStaging;
 	private final ServiceTracker<LayoutStaging, LayoutStaging> _serviceTracker;
 
 }

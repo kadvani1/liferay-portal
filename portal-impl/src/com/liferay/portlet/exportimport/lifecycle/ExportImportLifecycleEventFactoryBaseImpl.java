@@ -32,10 +32,9 @@ public class ExportImportLifecycleEventFactoryBaseImpl
 
 	public ExportImportLifecycleEventFactoryBaseImpl(
 		ExportImportLifecycleEventFactory
-			defaultExportImportLifecycleEventFactory) {
+			exportImportLifecycleEventFactory) {
 
-		_defaultExportImportLifecycleEventFactory =
-			defaultExportImportLifecycleEventFactory;
+		_exportImportLifecycleEventFactory = exportImportLifecycleEventFactory;
 
 		Registry registry = RegistryUtil.getRegistry();
 
@@ -57,14 +56,14 @@ public class ExportImportLifecycleEventFactoryBaseImpl
 		getExportImportLifecycleEventFactory() {
 
 		if (_serviceTracker.isEmpty()) {
-			return _defaultExportImportLifecycleEventFactory;
+			return _exportImportLifecycleEventFactory;
 		}
 
 		return _serviceTracker.getService();
 	}
 
 	private final ExportImportLifecycleEventFactory
-		_defaultExportImportLifecycleEventFactory;
+		_exportImportLifecycleEventFactory;
 	private final ServiceTracker
 		<ExportImportLifecycleEventFactory, ExportImportLifecycleEventFactory>
 			_serviceTracker;

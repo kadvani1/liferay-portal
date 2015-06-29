@@ -32,10 +32,10 @@ public class ExportImportProcessCallbackRegistryBaseImpl
 
 	public ExportImportProcessCallbackRegistryBaseImpl(
 		ExportImportProcessCallbackRegistry
-			defaultExportImportProcessCallbackRegistry) {
+			exportImportProcessCallbackRegistry) {
 
-		_defaultExportImportProcessCallbackRegistry =
-			defaultExportImportProcessCallbackRegistry;
+		_exportImportProcessCallbackRegistry =
+			exportImportProcessCallbackRegistry;
 
 		Registry registry = RegistryUtil.getRegistry();
 
@@ -54,14 +54,14 @@ public class ExportImportProcessCallbackRegistryBaseImpl
 		getExportImportProcessCallbackRegistry() {
 
 		if (_serviceTracker.isEmpty()) {
-			return _defaultExportImportProcessCallbackRegistry;
+			return _exportImportProcessCallbackRegistry;
 		}
 
 		return _serviceTracker.getService();
 	}
 
 	private final ExportImportProcessCallbackRegistry
-		_defaultExportImportProcessCallbackRegistry;
+		_exportImportProcessCallbackRegistry;
 	private final ServiceTracker
 		<ExportImportProcessCallbackRegistry,
 			ExportImportProcessCallbackRegistry> _serviceTracker;

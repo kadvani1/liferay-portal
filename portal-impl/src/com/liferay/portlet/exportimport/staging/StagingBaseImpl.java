@@ -54,8 +54,8 @@ public class StagingBaseImpl implements Staging {
 		this(new DummyStagingImpl());
 	}
 
-	public StagingBaseImpl(Staging defaultStaging) {
-		_defaultStaging = defaultStaging;
+	public StagingBaseImpl(Staging staging) {
+		_staging = staging;
 
 		Registry registry = RegistryUtil.getRegistry();
 
@@ -794,13 +794,13 @@ public class StagingBaseImpl implements Staging {
 
 	protected Staging getStaging() {
 		if (_serviceTracker.isEmpty()) {
-			return _defaultStaging;
+			return _staging;
 		}
 
 		return _serviceTracker.getService();
 	}
 
-	private final Staging _defaultStaging;
 	private final ServiceTracker<Staging, Staging> _serviceTracker;
+	private final Staging _staging;
 
 }

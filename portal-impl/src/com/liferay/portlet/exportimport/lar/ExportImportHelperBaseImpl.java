@@ -46,10 +46,8 @@ public class ExportImportHelperBaseImpl implements ExportImportHelper {
 		this(new DummyExportImportHelperImpl());
 	}
 
-	public ExportImportHelperBaseImpl(
-		ExportImportHelper defaultExportImportHelper) {
-
-		_defaultExportImportHelper = defaultExportImportHelper;
+	public ExportImportHelperBaseImpl(ExportImportHelper exportImportHelper) {
+		_exportImportHelper = exportImportHelper;
 
 		Registry registry = RegistryUtil.getRegistry();
 
@@ -666,13 +664,13 @@ public class ExportImportHelperBaseImpl implements ExportImportHelper {
 
 	protected ExportImportHelper getExportImportHelper() {
 		if (_serviceTracker.isEmpty()) {
-			return _defaultExportImportHelper;
+			return _exportImportHelper;
 		}
 
 		return _serviceTracker.getService();
 	}
 
-	private final ExportImportHelper _defaultExportImportHelper;
+	private final ExportImportHelper _exportImportHelper;
 	private final ServiceTracker<ExportImportHelper, ExportImportHelper>
 		_serviceTracker;
 

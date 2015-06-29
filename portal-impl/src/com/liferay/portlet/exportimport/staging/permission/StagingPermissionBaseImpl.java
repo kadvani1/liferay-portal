@@ -29,10 +29,8 @@ public class StagingPermissionBaseImpl implements StagingPermission {
 		this(new DummyStagingPermissionImpl());
 	}
 
-	public StagingPermissionBaseImpl(
-		StagingPermission defaultStagingPermission) {
-
-		_defaultStagingPermission = defaultStagingPermission;
+	public StagingPermissionBaseImpl(StagingPermission stagingPermission) {
+		_stagingPermission = stagingPermission;
 
 		Registry registry = RegistryUtil.getRegistry();
 
@@ -62,14 +60,14 @@ public class StagingPermissionBaseImpl implements StagingPermission {
 
 	protected StagingPermission getStagingPermission() {
 		if (_serviceTracker.isEmpty()) {
-			return _defaultStagingPermission;
+			return _stagingPermission;
 		}
 
 		return _serviceTracker.getService();
 	}
 
-	private final StagingPermission _defaultStagingPermission;
 	private final ServiceTracker<StagingPermission, StagingPermission>
 		_serviceTracker;
+	private final StagingPermission _stagingPermission;
 
 }
