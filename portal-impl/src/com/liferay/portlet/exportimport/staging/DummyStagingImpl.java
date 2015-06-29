@@ -91,9 +91,8 @@ public class DummyStagingImpl implements Staging {
 	@Deprecated
 	@Override
 	public void copyPortlet(
-		PortletRequest PortletRequest, long sourceGroupId,
-		long targetGroupId, long sourcePlid, long targetPlid,
-		String portletId) {
+		PortletRequest PortletRequest, long sourceGroupId, long targetGroupId,
+		long sourcePlid, long targetPlid, String portletId) {
 	}
 
 	@Override
@@ -446,8 +445,8 @@ public class DummyStagingImpl implements Staging {
 
 	@Override
 	public void publishPortlet(
-		long userId, long sourceGroupId, long targetGroupId,
-		long sourcePlid, long targetPlid, String portletId,
+		long userId, long sourceGroupId, long targetGroupId, long sourcePlid,
+		long targetPlid, String portletId,
 		Map<String, String[]> parameterMap) {
 	}
 

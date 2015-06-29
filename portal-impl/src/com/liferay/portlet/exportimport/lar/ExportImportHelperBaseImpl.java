@@ -49,13 +49,13 @@ public class ExportImportHelperBaseImpl implements ExportImportHelper {
 	public ExportImportHelperBaseImpl(
 		ExportImportHelper defaultExportImportHelper) {
 
+		_defaultExportImportHelper = defaultExportImportHelper;
+
 		Registry registry = RegistryUtil.getRegistry();
 
 		_serviceTracker = registry.trackServices(ExportImportHelper.class);
 
 		_serviceTracker.open();
-
-		_defaultExportImportHelper = defaultExportImportHelper;
 	}
 
 	@Override
