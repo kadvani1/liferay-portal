@@ -61,7 +61,7 @@ public class PortletDisplayTemplateManagerUtil {
 
 	public static String renderDDMTemplate(
 			HttpServletRequest request, HttpServletResponse response,
-			long templateId, List<?> entries, 
+			long templateId, List<?> entries,
 			Map<String, Object> contextObjects)
 		throws Exception {
 
@@ -75,16 +75,17 @@ public class PortletDisplayTemplateManagerUtil {
 	private static PortletDisplayTemplateManager
 		_getPortletDisplayTemplateManager() {
 
-		PortletDisplayTemplateManager manager = 
+		PortletDisplayTemplateManager manager =
 			_instance._serviceTracker.getService();
-		
-		if(manager != null) {
+
+		if (manager != null) {
 			return manager;
 		}
 		else {
-			if(_dummyImpl == null) {
+			if (_dummyImpl == null) {
 				_dummyImpl = new DummyPortletDisplayTemplateManagerImpl();
 			}
+
 			return _dummyImpl;
 		}
 	}
@@ -100,7 +101,7 @@ public class PortletDisplayTemplateManagerUtil {
 
 	private static final PortletDisplayTemplateManagerUtil _instance =
 		new PortletDisplayTemplateManagerUtil();
-	
+
 	private static DummyPortletDisplayTemplateManagerImpl _dummyImpl;
 
 	private final
