@@ -618,7 +618,7 @@ public abstract class BaseStore implements Store {
 
 			sb.append("} because it does not exist");
 
-			_log.warn(sb.toString());
+			_log.warn(sb.toString(), new Exception());
 		}
 	}
 
