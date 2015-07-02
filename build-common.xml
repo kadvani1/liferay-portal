@@ -1309,7 +1309,7 @@ rerun your task.
 						</then>
 					</if>
 
-					<junit-cmd
+<!--					<junit-cmd
 						forkmode="@{junit.forkmode}"
 						test.type="@{test.type}"
 					>
@@ -1332,7 +1332,7 @@ rerun your task.
 								</fileset>
 							</batchtest>
 						</test.classes>
-					</junit-cmd>
+					</junit-cmd>-->
 				</then>
 			</if>
 		</sequential>
