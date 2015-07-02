@@ -75,7 +75,18 @@ public class PortletDisplayTemplateManagerUtil {
 	private static PortletDisplayTemplateManager
 		_getPortletDisplayTemplateManager() {
 
-		return _instance._serviceTracker.getService();
+		PortletDisplayTemplateManager manager = 
+			_instance._serviceTracker.getService();
+		
+		if(manager != null) {
+			return manager;
+		}
+		else {
+			if(_dummyImpl == null) {
+				_dummyImpl = new DummyPortletDisplayTemplateManagerImpl();
+			}
+			return _dummyImpl;
+		}
 	}
 
 	private PortletDisplayTemplateManagerUtil() {
@@ -89,6 +100,8 @@ public class PortletDisplayTemplateManagerUtil {
 
 	private static final PortletDisplayTemplateManagerUtil _instance =
 		new PortletDisplayTemplateManagerUtil();
+	
+	private static DummyPortletDisplayTemplateManagerImpl _dummyImpl;
 
 	private final
 		ServiceTracker<PortletDisplayTemplateManager,
